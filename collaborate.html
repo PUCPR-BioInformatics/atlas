@@ -20,7 +20,7 @@
 
   <link rel="stylesheet" href="/atlas/assets/main.css">
   <link rel="shortcut icon" type="image/png" href="favicon.png">
-  <link rel="canonical" href="https://pucpr-bioinformatics.github.io/atlas/colaborate.html">
+  <link rel="canonical" href="https://pucpr-bioinformatics.github.io/atlas/collaborate.html">
   <link rel="alternate" type="application/rss+xml" title="Atlas" href="/atlas/feed.xml">
 
 </head>
@@ -48,7 +48,7 @@
           <a class="nav-link" href="/atlas/atlas">Atlas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/atlas/colaborate">Colaborate</a>
+          <a class="nav-link" href="/atlas/collaborate">Collaborate</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/atlas/contact">Contact</a>
@@ -181,101 +181,6 @@
 <script src="/atlas/assets/scripts.js"></script>
 
 
-
-  <!-- Form Validation -->
-  <script src="/atlas/assets/vendor/startbootstrap-clean-blog/js/jqBootstrapValidation.js"></script>
-  <!-- Send Form -->
-  <script>
-    $(function () {
-
-      $("#colaborateForm input,#colaborateForm textarea").jqBootstrapValidation({
-        preventSubmit: true,
-        submitError: function ($form, event, errors) {
-          // additional error messages or events
-        },
-        submitSuccess: function ($form, event) {
-          event.preventDefault(); // prevent default submit behaviour
-          // get values from FORM
-          var name = $("input#name").val();
-          var email = $("input#email").val();
-          var gene_molecule = $("input#gene_molecule").val();
-          var description = $("textarea#description").val();
-          var activity = $("textarea#activity").val();
-          var references = $("textarea#references").val();
-          
-          $this = $("#sendMessageButton");
-          $this.prop("disabled", true);
-          //https://docs.google.com/forms/d/e/1FAIpQLScUB06uuc8wMfg69Z_L39qHDGtHzkK_tyukxvJTEPEy64qd0A/viewform?usp=pp_url&entry.448008776=name&entry.1148602240=email&entry.1131006880=gene&entry.1037379784=desc&entry.1153719253=activity&entry.1091222598=ref
-          var formId = '1FAIpQLScUB06uuc8wMfg69Z_L39qHDGtHzkK_tyukxvJTEPEy64qd0A'
-          var url = 'https://docs.google.com/forms/d/e/' + formId + '/formResponse'
-          var data ={
-            "entry.448008776": name,
-            "entry.1148602240": email,
-            "entry.1131006880": gene_molecule,
-            "entry.1037379784": description,
-            "entry.1153719253": activity,
-            "entry.1091222598": references,
-            "submit": "SUBMIT"
-          }
-          $.ajax({
-            url: url,
-            data: data, //Nifty jquery function that gets all the input data
-            type: 'POST', //tells ajax to post the data to the url
-            dataType: "json",
-            statusCode: { //the status code from the POST request
-              0: function(data) { //0 is when Google gives a CORS error, don't worry it went through
-                // Success message
-                $('#success').html("<div class='alert alert-success'>");
-                $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
-                $('#success > .alert-success').append("<strong>Your message has been sent. </strong>");
-                $('#success > .alert-success').append('</div>');
-                //clear all fields
-                $('#colaborateForm').trigger("reset");
-              },
-              200: function(data) {//200 is a success code. it went through!
-                // Success message
-                $('#success').html("<div class='alert alert-success'>");
-                $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
-                $('#success > .alert-success').append("<strong>Your message has been sent. </strong>");
-                $('#success > .alert-success').append('</div>');
-                //clear all fields
-                $('#colaborateForm').trigger("reset");
-              },
-              403: function(data) {//403 is when something went wrong and the submission didn't go through
-                // Fail message
-                $('#success').html("<div class='alert alert-danger'>");
-                $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
-                $('#success > .alert-danger').append($("<strong>").text("Sorry " + name + ", it seems that my mail server is not responding. Please try again later!"));
-                $('#success > .alert-danger').append('</div>');
-                //clear all fields
-                $('#colaborateForm').trigger("reset");
-              },
-            },
-            complete: function () {
-              setTimeout(function () {
-                $this.prop("disabled", false); // Re-enable submit button when AJAX call is complete
-              }, 1000);
-            }
-            
-          });
-          
-        },
-        filter: function () {
-          return $(this).is(":visible");
-        }
-      });
-
-      $("a[data-toggle=\"tab\"]").click(function (e) {
-        e.preventDefault();
-        $(this).tab("show");
-      });
-    });
-
-    /*When clicking on Full hide fail/success boxes */
-    $('#name').focus(function () {
-      $('#success').html('');
-    });
-  </script>
 
 
 
