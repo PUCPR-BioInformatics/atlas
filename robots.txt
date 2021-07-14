@@ -1,1 +1,1 @@
-Sitemap: https://codelp.github.io/sites_teste/sitemap.xml
+Sitemap: https://pucpr-bioinformatics.github.io/atlas/sitemap.xml
