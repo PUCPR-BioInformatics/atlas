@@ -2516,4 +2516,8 @@ header.masthead .post-heading .meta a { color: #fff; }
 
 @media only screen and (min-width: 768px) { .post-preview > a > .post-title { font-size: 36px; } }
 
+.popover { max-width: 100%; /* Max Width of the popover (depending on the container!) */ }
+
+.popover img { max-width: 500px; /* Max Width of the popover (depending on the container!) */ }
+
 /*# sourceMappingURL=main.css.map */
