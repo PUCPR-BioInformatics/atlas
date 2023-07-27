@@ -31,3 +31,5 @@ plugins:
 
 scholar:
   style: modern-language-association
+include:
+ - _data/Atlas.csv
